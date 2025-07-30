@@ -9,20 +9,12 @@ flyway-clickhouse-driver:
 	mkdir -p /opt/flyway/drivers
 	mv clickhouse-jdbc-0.6.0-all.jar /opt/flyway/drivers/
 
-# flyway-install:
-# 	mkdir -p temp
-# 	tar -xzf flyway-desktop-linuxX64-8.3.7.0.tar.gz -C temp
-# 	sudo mv temp/flyway /opt/flyway
-# 	rm -rf temp
-
 flyway-install:
 	wget https://github.com/flyway/flyway/releases/download/flyway-$(FLYWAY_VERSION)/flyway-commandline-$(FLYWAY_VERSION)-linux-x64.tar.gz
 	tar -xzf flyway-commandline-$(FLYWAY_VERSION)-linux-x64.tar.gz
 	sudo mv flyway-$(FLYWAY_VERSION) /opt/flyway
 	sudo rm flyway-commandline-$(FLYWAY_VERSION)-linux-x64.tar.gz
 	
-# https://github.com/flyway/flyway/releases/download/flyway-11.10.4/flyway-commandline-11.10.4.tar.gz
-
 flyway-auth:
 	flyway auth -IAgreeToTheEula
 
@@ -32,6 +24,9 @@ flyway-uninstall:
 
 migrate:
 	flyway migrate
+
+repair:
+	flyway repair
 
 flyway-all: flyway-install flyway-symlink flyway-clickhouse-driver
 
