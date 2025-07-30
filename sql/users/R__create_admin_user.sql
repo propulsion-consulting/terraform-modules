@@ -1,0 +1,1 @@
+CREATE USER ADMIN_USER IDENTIFIED WITH plaintext_password BY 'mypassword$:';
