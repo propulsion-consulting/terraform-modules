@@ -61,3 +61,7 @@ deploy:
 	$(MAKE) flyway-all
 	$(MAKE) clickhouse-install
 	$(MAKE) clickhouse-start
+
+# Possible utilies being messed with here
+upload-files:
+	scp -r ../data dsm001@192.168.4.58:/home/dsm001/Desktop
