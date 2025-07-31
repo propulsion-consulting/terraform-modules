@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "server": "http://192.168.4.58",
+            "port": 8123,
+            "database": "DATA_EXPLORATION",
+            "useJWT": false,
+            "requestTimeout": 30000,
+            "enableTls": false,
+            "previewLimit": 50,
+            "password": "dataexplorationdb001$:",
+            "username": "DATA_EXPLORATION_USER_001",
+            "driver": "ClickHouse",
+            "name": "DATA_EXPLORATION"
+        }
+    ]
+}
