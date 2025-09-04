@@ -1,35 +1,3 @@
-FLYWAY_VERSION = 11.10.4
-
-## Install flyway for managing database scripts
-flyway-symlink:
-	sudo ln -sf /opt/flyway/flyway /usr/local/bin/flyway
-
-flyway-clickhouse-driver:
-	wget https://repo1.maven.org/maven2/com/clickhouse/clickhouse-jdbc/0.6.0/clickhouse-jdbc-0.6.0-all.jar 
-	mkdir -p /opt/flyway/drivers
-	mv clickhouse-jdbc-0.6.0-all.jar /opt/flyway/drivers/
-
-flyway-install:
-	wget https://github.com/flyway/flyway/releases/download/flyway-$(FLYWAY_VERSION)/flyway-commandline-$(FLYWAY_VERSION)-linux-x64.tar.gz
-	tar -xzf flyway-commandline-$(FLYWAY_VERSION)-linux-x64.tar.gz
-	sudo mv flyway-$(FLYWAY_VERSION) /opt/flyway
-	sudo rm flyway-commandline-$(FLYWAY_VERSION)-linux-x64.tar.gz
-	
-flyway-auth:
-	flyway auth -IAgreeToTheEula
-
-flyway-uninstall:
-	sudo rm -rf /opt/flyway
-	sudo rm -f /usr/local/bin/flyway
-
-migrate:
-	flyway migrate
-
-repair:
-	flyway repair
-
-flyway-all: flyway-install flyway-symlink flyway-clickhouse-driver
-
 ## Install database & it's client utilities
 clickhouse-install-deb-repo:
 	sudo apt-get install -y apt-transport-https ca-certificates curl gnupg

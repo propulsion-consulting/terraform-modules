@@ -1,2 +1,15 @@
 flyway-desktop-linuxX64-8.3.7.0.tar.gz
 *.tar.gz
+
+# Terraform
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+*.tfstate
+*.tfstate.*
+
+# IDE specific
+.vscode/
+.idea/
+*.swp
+*.swo

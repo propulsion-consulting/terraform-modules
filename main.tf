@@ -7,56 +7,18 @@ terraform {
   }
 }
 
-# Pull docker provider
 provider "docker" {
   host = "unix:///var/run/docker.sock"
 }
 
-# Pull clickhouse image 
-resource "docker_image" "clickhouse" {
-  name = "clickhouse/clickhouse-server:latest"
-}
-
-
-# Create volume to persist clickhouse data
-resource "docker_volume" "clickhouse_data" {
-  name = "clickhouse_data"
-}
-
-# Container to manage clickhouse deployment
-resource "docker_container" "nginx" {
-  image = docker_image.clickhouse.image_id
-  name  = "clickhouse-container"
-
-  # Attach volume to container
-  volumes {
-    volume_name = docker_volume.clickhouse_data.name
-    container_path = "/var/lib/clickhouse"
-  }
-
-  # HTTP Access
-  ports {
-    internal = 8123
-    external = 8123
-  }
-
-  # Database Access
-  ports {
-    internal = 9000
-    external = 9000
-  }
-
-  # Database Access
-  ports {
-    internal = 9009
-    external = 9009
-  }
-
-  # Environment variables
-  env = [
+module "clickhouse-on-prem" {
+  source          = "./modules/clickhouse-on-prem"
+  image_name      = "clickhouse/clickhouse-server:latest"
+  container_name  = "clickhouse-deployment"
+  clickhouse_volume_name  = "clickhouse"
+  environment_variables = [
     "CLICKHOUSE_DB=default",
     "CLICKHOUSE_USER=default",
-    "CLICKHOUSE_PASSWORD="
+    "CLICKHOUSE_PASSWORD=testingpassword"
   ]
-
 }
