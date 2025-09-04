@@ -38,6 +38,12 @@ resource "docker_container" "clickhouse" {
     container_path = "/var/lib/clickhouse"
   }
 
+  # Attach admin user config
+  volumes {
+    host_path = "/home/shay/Documents/shay/projects/terraform-modules/config/users.xml"
+    container_path = "/etc/clickhouse-server/users.d/custom-users.xml"
+  }
+
   # HTTP Access
   ports {
     internal = 8123

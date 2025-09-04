@@ -1,0 +1,13 @@
+<!-- users.xml -->
+<yandex>
+  <users>
+    <default>
+      <password>testingpassword</password> <!-- or use <password_sha256_hex> -->
+      <profile>default</profile>
+      <networks>
+        <ip>::/0</ip> <!-- allow all IPs -->
+      </networks>
+      <access_management>1</access_management> <!-- ⭐️ allow GRANT, CREATE USER, etc -->
+    </default>
+  </users>
+</yandex>
