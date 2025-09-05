@@ -11,6 +11,7 @@ provider "docker" {
   host = "unix:///var/run/docker.sock"
 }
 
+# Deploy on prem clickhouse cluster
 module "clickhouse-on-prem" {
   source          = "./modules/clickhouse-on-prem"
   image_name      = "clickhouse/clickhouse-server:latest"
@@ -21,4 +22,16 @@ module "clickhouse-on-prem" {
     "CLICKHOUSE_USER=default",
     "CLICKHOUSE_PASSWORD=testingpassword"
   ]
+}
+
+# Postgres application cluster deployment
+module "postgres-on-prem" {
+  source = "./modules/postgres-on-prem"
+  alias  = "dsm001-dev"
+}
+
+# Locally hosted docker registry
+module "container-registry-on-prem" {
+  source          = "./modules/container-registry-on-prem"
+  alias           = "dsm001-dev"
 }
