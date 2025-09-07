@@ -1,14 +1,14 @@
-variable "app_db_name" {
-  description = "Name of the Postgres database"
+variable "app_name" {
+  description = "Name of the application"
   type        = string
 }
 
-variable "app_db_user" {
-  description = "Postgres database user"
+variable "image_tag" {
+  description = "Image tag for the Docker container"
   type        = string
 }
 
-variable "app_db_password" {
-  description = "Postgres database password"
+variable "registry_host" {
+  description = "Host of the image registry"
   type        = string
 }

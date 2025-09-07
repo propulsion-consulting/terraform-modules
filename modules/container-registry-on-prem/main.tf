@@ -32,6 +32,10 @@ resource "docker_container" "registry" {
     external = 5000
   }
 
+  env = [
+    "REGISTRY_STORAGE_DELETE_ENABLED=true"
+  ]
+
   volumes {
     volume_name    = docker_volume.primary_registry_data.name
     container_path = "/var/lib/registry"

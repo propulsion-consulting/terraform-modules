@@ -4,6 +4,10 @@ terraform {
       source  = "cyrilgdn/postgresql"
       version = "~> 1.20"
     }
+    docker = {
+      source  = "kreuzwerker/docker"
+      version = "~> 3.0.2"
+    }
   }
 }
 
@@ -19,14 +23,14 @@ provider "postgresql" {
 
 # Create a new database
 resource "postgresql_database" "appdb" {
-  name = var.app_db_name
+  name = "${var.app_name}_db"
   owner = "admin"
 }
 
 # Create a new user
 resource "postgresql_role" "appuser" {
-  name     = var.app_db_user
-  password = var.app_db_password
+  name     = "${var.app_name}_user"
+  password = "${var.app_name}_pass"
   login    = true
 }
 
@@ -36,4 +40,18 @@ resource "postgresql_grant" "appuser_db_access" {
   role        = postgresql_role.appuser.name
   object_type = "database"
   privileges  = ["CONNECT", "TEMPORARY"]
+}
+
+# Depends on database and user creation
+resource "docker_image" "app_image" {
+  name = "${var.registry_host}/${var.app_name}:${var.image_tag}"
+}
+
+resource "docker_container" "my_app_container" {
+  name  = "${var.app_name}_container"
+  image = docker_image.app_image.name
+  ports {
+    internal = 8080
+    external = 8080
+  }
 }

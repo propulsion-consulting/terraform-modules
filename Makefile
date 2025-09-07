@@ -1,9 +1,14 @@
 deploy-base:
-	cd environments/dev/base && terraform init && terraform apply -auto-approve
+	cd environments/dev/base && sudo terraform init && sudo terraform apply -auto-approve
+
+destroy-base:
+	cd environments/dev/base && sudo terraform init && sudo terraform destroy -auto-approve
 
 deploy-apps:
-	cd environments/dev/applications && terraform init && terraform apply -auto-approve
+	cd environments/dev/applications && sudo terraform init && sudo terraform apply -auto-approve
 
+destroy-apps:
+	cd environments/dev/applications && sudo terraform init && sudo terraform destroy -auto-approve
 
 tf-app-clean:
 	rm -f environments/dev/applications/.terraform.lock.hcl
