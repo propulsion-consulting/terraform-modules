@@ -57,7 +57,7 @@ resource "postgresql_grant" "appuser_table_privileges" {
   role        = postgresql_role.appuser.name
   object_type = "table"
   schema      = "public"
-  privileges  = ["SELECT", "INSERT", "UPDATE", "DELETE"]
+  privileges  = ["SELECT", "INSERT", "UPDATE", "DELETE", "REFERENCES"]
 }
 
 # Grant privileges on sequences (for serial/auto-increment columns)
@@ -68,7 +68,6 @@ resource "postgresql_grant" "appuser_sequence_privileges" {
   schema      = "public"
   privileges  = ["USAGE", "SELECT", "UPDATE"]
 }
-
 
 # Depends on database and user creation
 resource "docker_image" "app_image" {
