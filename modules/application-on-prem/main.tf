@@ -57,7 +57,7 @@ resource "postgresql_grant" "appuser_table_privileges" {
   role        = postgresql_role.appuser.name
   object_type = "table"
   schema      = "public"
-  privileges  = ["SELECT", "INSERT", "UPDATE", "DELETE", "REFERENCES"]
+  privileges  = ["SELECT", "INSERT", "UPDATE", "DELETE"]
 }
 
 # Grant privileges on sequences (for serial/auto-increment columns)
