@@ -29,6 +29,7 @@ resource "docker_volume" "clickhouse_backup_volume" {
 
 # Container to manage clickhouse deployment
 resource "docker_container" "clickhouse" {
+  
   image = docker_image.clickhouse.image_id
   name  = var.container_name
   restart  = "always"

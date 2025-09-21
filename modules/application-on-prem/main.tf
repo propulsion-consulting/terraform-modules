@@ -8,6 +8,9 @@ terraform {
       source  = "kreuzwerker/docker"
       version = "~> 3.0.2"
     }
+    clickhouse = {
+      source  = "ClickHouse/clickhouse"
+    }
   }
 }
 
