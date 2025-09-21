@@ -13,3 +13,5 @@ terraform.tfstate.backup
 .idea/
 *.swp
 *.swo
+.obsidian/
+.venv

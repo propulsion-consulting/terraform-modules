@@ -13,7 +13,7 @@ provider "docker" {
 
 # Deploy on prem clickhouse cluster
 module "clickhouse-on-prem" {
-  source          = "./modules/clickhouse-on-prem"
+  source          = "../../../modules/clickhouse-on-prem"
   image_name      = "clickhouse/clickhouse-server:latest"
   container_name  = "clickhouse-deployment"
   clickhouse_volume_name  = "clickhouse"
@@ -26,20 +26,12 @@ module "clickhouse-on-prem" {
 
 # Postgres application cluster deployment
 module "postgres-on-prem" {
-  source = "./modules/postgres-on-prem"
+  source = "../../../modules/postgres-on-prem"
   alias  = "dsm001-dev"
 }
 
 # Locally hosted docker registry
 module "container-registry-on-prem" {
-  source          = "./modules/container-registry-on-prem"
+  source          = "../../../modules/container-registry-on-prem"
   alias           = "dsm001-dev"
-}
-
-# Create first application instance
-module "application-on-prem" {
-  source = "./modules/application-on-prem"
-  app_db_name = "appdb"
-  app_db_user = "appdb_user"
-  app_db_password = "appdb_pass"
 }

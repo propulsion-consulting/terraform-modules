@@ -29,13 +29,21 @@ resource "docker_volume" "clickhouse_backup_volume" {
 
 # Container to manage clickhouse deployment
 resource "docker_container" "clickhouse" {
+  
   image = docker_image.clickhouse.image_id
   name  = var.container_name
+  restart  = "always"
 
   # Attach volume to container
   volumes {
     volume_name = docker_volume.clickhouse_volume.name
     container_path = "/var/lib/clickhouse"
+  }
+
+  # Attach admin user config
+  volumes {
+    host_path = "/home/shay/Documents/shay/projects/terraform-modules/config/users.d"
+    container_path = "/etc/clickhouse-server/users.d"
   }
 
   # HTTP Access
@@ -58,7 +66,4 @@ resource "docker_container" "clickhouse" {
 
   # Environment variables
   env = var.environment_variables
-
-  restart  = "always"
-
 }

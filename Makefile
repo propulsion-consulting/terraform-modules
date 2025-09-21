@@ -1,35 +1,34 @@
-## Install database & it's client utilities
-clickhouse-install-deb-repo:
-	sudo apt-get install -y apt-transport-https ca-certificates curl gnupg
-	curl -fsSL 'https://packages.clickhouse.com/rpm/lts/repodata/repomd.xml.key' | sudo gpg --dearmor -o /usr/share/keyrings/clickhouse-keyring.gpg
-	
-clickhouse-sign:
-	ARCH=$$(dpkg --print-architecture); \
-	echo "deb [signed-by=/usr/share/keyrings/clickhouse-keyring.gpg arch=$$ARCH] https://packages.clickhouse.com/deb stable main" | sudo tee /etc/apt/sources.list.d/clickhouse.list > /dev/null
-	sudo apt-get update
+VENV_DIR := .venv
+PYTHON := python3
+PIP := $(VENV_DIR)/bin/pip
 
-clickhouse-install-client:
-	sudo apt-get install -y clickhouse-server clickhouse-client
+venv: $(VENV_DIR)/bin/activate
 
-clickhouse-start:
-	sudo systemctl start clickhouse-server
+$(VENV_DIR)/bin/activate:
+	$(PYTHON) -m venv $(VENV_DIR)
+	$(PIP) install --upgrade pip
+	$(PIP) install -r requirements.txt
 
-clickhouse-stop:
-	sudo systemctl stop clickhouse-server
+dev:
+	mkdocs serve
 
-clickhouse-status:
-	sudo systemctl status clickhouse-server
+deploy-base:
+	cd environments/dev/base && sudo terraform init && sudo terraform apply -auto-approve
 
-clickhouse-install:
-	$(MAKE) clickhouse-install-deb-repo
-	$(MAKE) clickhouse-sign
-	$(MAKE) clickhouse-install-client
+destroy-base:
+	cd environments/dev/base && sudo terraform init && sudo terraform destroy -auto-approve
 
-deploy:
-	$(MAKE) flyway-all
-	$(MAKE) clickhouse-install
-	$(MAKE) clickhouse-start
+deploy-apps:
+	cd environments/dev/applications && sudo terraform init && sudo terraform apply -auto-approve
 
-# Possible utilies being messed with here
-upload-files:
-	scp -r ../data dsm001@192.168.4.58:/home/dsm001/Desktop
+destroy-apps:
+	cd environments/dev/applications && sudo terraform init && sudo terraform destroy -auto-approve
+
+tf-app-clean:
+	rm -f environments/dev/applications/.terraform.lock.hcl
+	rm -rf environments/dev/applications/.terraform
+
+tf-base-clean:
+	rm -rf environments/dev/base/.terraform
+	rm -f environments/dev/base/.terraform.lock.hcl
+	rm -rf environments/dev/base/.terraform
