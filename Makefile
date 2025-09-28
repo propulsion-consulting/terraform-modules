@@ -18,6 +18,12 @@ deploy-base:
 destroy-base:
 	cd environments/dev/base && sudo terraform init && sudo terraform destroy -auto-approve
 
+deploy-dbs:
+	cd environments/dev/databases && sudo terraform init && sudo terraform apply -auto-approve
+
+destroy-dbs:
+	cd environments/dev/databases && sudo terraform init && sudo terraform destroy -auto-approve
+
 deploy-apps:
 	cd environments/dev/applications && sudo terraform init && sudo terraform apply -auto-approve
 

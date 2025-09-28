@@ -31,7 +31,10 @@ module "postgres-on-prem" {
 }
 
 # Locally hosted docker registry
-module "container-registry-on-prem" {
+module "dsm001-dev-container-registry" {
   source          = "../../../modules/container-registry-on-prem"
   alias           = "dsm001-dev"
+  restart_policy =  "unless-stopped"
+  internal_port = 5000
+  external_port = 5000
 }
