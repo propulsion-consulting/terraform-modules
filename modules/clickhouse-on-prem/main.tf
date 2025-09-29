@@ -48,20 +48,20 @@ resource "docker_container" "clickhouse" {
 
   # HTTP Access
   ports {
-    internal = 8123
-    external = 8123
+    internal = var.http_internal_port
+    external = var.http_external_port
+  }
+
+  # Client Access
+  ports {
+    internal = var.client_internal_port
+    external = var.client_external_port
   }
 
   # Database Access
   ports {
-    internal = 9000
-    external = 9000
-  }
-
-  # Database Access
-  ports {
-    internal = 9009
-    external = 9009
+    internal = var.db_internal_port
+    external = var.db_external_port
   }
 
   # Environment variables
