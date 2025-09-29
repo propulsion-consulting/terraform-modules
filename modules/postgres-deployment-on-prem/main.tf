@@ -1,18 +1,3 @@
-terraform {
-  required_providers {
-    docker = {
-      source  = "kreuzwerker/docker"
-      version = "~> 3.0.2"
-    }
-  }
-}
-
-# Pull docker provider
-provider "docker" {
-  host = "unix:///var/run/docker.sock"
-}
-
-
 # Create Docker volume for data persistence (primary)
 resource "docker_volume" "postgres_data_primary" {
   name = "${var.alias}_postgres_data_primary"
@@ -35,15 +20,11 @@ resource "docker_container" "postgres" {
   image = docker_image.postgres.name
   restart = "unless-stopped"
 
-  env = [
-    "POSTGRES_USER=admin",
-    "POSTGRES_PASSWORD=adminpass",
-    "POSTGRES_DB=admindb"
-  ]
+  env = var.environment_variables
 
   ports {
-    internal = 5432
-    external = 5432
+    internal = var.internal_port
+    external = var.external_port
   }
 
   volumes {
