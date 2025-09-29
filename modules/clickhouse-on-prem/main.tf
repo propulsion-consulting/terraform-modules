@@ -1,17 +1,3 @@
-terraform {
-  required_providers {
-    docker = {
-      source  = "kreuzwerker/docker"
-      version = "~> 3.0.2"
-    }
-  }
-}
-
-# Pull docker provider
-provider "docker" {
-  host = "unix:///var/run/docker.sock"
-}
-
 # Pull clickhouse image 
 resource "docker_image" "clickhouse" {
   name = var.image_name
@@ -42,7 +28,7 @@ resource "docker_container" "clickhouse" {
 
   # Attach admin user config
   volumes {
-    host_path = "/home/shay/Documents/shay/projects/terraform-modules/config/users.d"
+    host_path = "${var.clickhouse_host_config_path}"
     container_path = "/etc/clickhouse-server/users.d"
   }
 

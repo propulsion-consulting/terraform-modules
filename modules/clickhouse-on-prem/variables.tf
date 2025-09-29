@@ -13,6 +13,11 @@ variable "clickhouse_volume_name" {
   type        = string
 }
 
+variable "clickhouse_host_config_path" {
+  description = "Path on the host machine to the ClickHouse users.d configuration directory"
+  type        = string
+}
+
 variable "http_internal_port" {
   description = "Internal HTTP port for Clickhouse"
   type        = number
