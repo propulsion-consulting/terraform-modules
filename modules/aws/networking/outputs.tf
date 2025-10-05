@@ -1,6 +1,6 @@
-output "db_security_group_ids" {
-  description = "IDs of the security groups for the RDS instance"
-  value       = [aws_security_group.rds.id]
+output "db_security_group_id" {
+  description = "ID of the security group for the RDS instance"
+  value       = aws_security_group.rds.id
 }
 
 output "db_subnet_group_name" {
