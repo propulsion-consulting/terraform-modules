@@ -8,9 +8,10 @@ variable "db_instance_name" {
   type        = string
 }
 
-variable "db_security_group_id" {
+variable "db_security_group_ids" {
   description = "Security group IDs for the DB instance"
-  type        = string
+  type        = list(string)
+  default     = []
 }
 
 variable "admin_db_user" {
