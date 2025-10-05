@@ -18,8 +18,7 @@ variable "admin_db_password" {
   type        = string
 }
 
-variable "db_security_group_ids" {
-  description = "Security group IDs for the DB instance"
-  type        = list(string)
-  default     = []
+variable "db_subnet_group_name" {
+  description = "Name of the DB subnet group"
+  type        = string
 }

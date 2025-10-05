@@ -16,7 +16,7 @@ resource "aws_db_instance" "pg_db_instance" {
   engine_version         = "14"
   username               = "${var.admin_db_user}"
   password               = "${var.admin_db_password}"
-  vpc_security_group_ids = var.db_security_group_ids
+  db_subnet_group_name    = var.db_subnet_group_name
   parameter_group_name   = aws_db_parameter_group.pg_db_parameter_group.name
   publicly_accessible    = true
   skip_final_snapshot    = true
