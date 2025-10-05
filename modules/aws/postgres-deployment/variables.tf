@@ -8,12 +8,6 @@ variable "db_instance_name" {
   type        = string
 }
 
-variable "db_security_group_ids" {
-  description = "Security group IDs for the DB instance"
-  type        = list(string)
-  default     = []
-}
-
 variable "admin_db_user" {
   description = "Name of the admin DB user"
   type        = string
@@ -22,4 +16,10 @@ variable "admin_db_user" {
 variable "admin_db_password" {
   description = "Password for the admin DB user"
   type        = string
+}
+
+variable "db_security_group_ids" {
+  description = "Security group IDs for the DB instance"
+  type        = list(string)
+  default     = []
 }
