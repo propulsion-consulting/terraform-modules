@@ -42,6 +42,8 @@
 
 ### Table Storing One Time Pass Codes
 
+**Note**: Not completing this in first iteration but will be needed later down the road for E-mail confirmation and sign ups. 
+
 | Field Name   | Type      | Description                                                                        |
 | ------------ | --------- | ---------------------------------------------------------------------------------- |
 | `ID`         | `INTEGER` | Unique identifier associated with code generation for 2FA                          |
@@ -57,6 +59,8 @@
 * For applications with authentication but not available for full public use, a registration key system will be used to issue unique invites. 
 * The user registration route will need to reference registration keys stored in the database to validate if a requester has permission to create an account.
 * When a user successfully registers an account with the system, the registration key will be marked as inactive and then can no longer be used to register any more accounts.
+
+![Registration Key](../assets/user-registration-key.jpg)
 
 ### Registration Key Table
 | Field Name         | Type      | Description                                               |
