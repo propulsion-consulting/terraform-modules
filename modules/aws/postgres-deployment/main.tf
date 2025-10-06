@@ -17,6 +17,7 @@ resource "aws_db_instance" "pg_db_instance" {
   username               = "${var.admin_db_user}"
   password               = "${var.admin_db_password}"
   db_subnet_group_name    = var.db_subnet_group_name
+  vpc_security_group_ids = var.vpc_security_group_ids
   parameter_group_name   = aws_db_parameter_group.pg_db_parameter_group.name
   publicly_accessible    = true
   skip_final_snapshot    = true
