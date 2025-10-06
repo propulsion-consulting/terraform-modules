@@ -5,6 +5,7 @@ provider "postgresql" {
   password        = "${var.admin_db_pass}"
   sslmode         = "disable"
   connect_timeout = var.admin_db_connection_timeout
+  superuser      = false
 }
 
 # Create a new user
