@@ -10,5 +10,5 @@ output "db_security_group_id" {
 
 output "vpc_id" {
   description = "ID of the VPC"
-  value       = module.vpc.id
+  value       = module.vpc.vpc_id
 }
