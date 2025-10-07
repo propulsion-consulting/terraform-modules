@@ -30,18 +30,42 @@ resource "aws_ecr_lifecycle_policy" "container_app_registry_policy" {
     policy = jsonencode({
       rules = [
         {
-          rule_priority = 1
-          description   = "${var.lifecycle_policy_description}"
-          selection     = {
-            count_type        = "${var.lifecycle_policy_count_type}"
-            count_number      = var.lifecycle_policy_count_number
-            tag_status        = "tagged"
-            tag_prefix_list   = var.lifecycle_policy_tag_prefix_list
-          }
-          action = {
-            type = "expire"
-          }
+            rule_priority = 1
+            description   = "${var.lifecycle_policy_description}"
+            selection     = {
+                count_type        = "${var.lifecycle_policy_count_type}"
+                count_number      = var.lifecycle_policy_count_number
+                tag_status        = "tagged"
+                tag_prefix_list   = var.lifecycle_policy_tag_prefix_list
+            }
+            action = {
+                type = "expire"
+            }
+        },
+        {
+            rule_priority = 2
+            tag_status = "any"
+            count_type = "sinceImagePushed"
+            tag_prefix_list = ""
+            count_number = 90
+        },
+        {
+            rule_priority = 3
+            tag_status = "untagged"
+            count_type = "sinceImagePushed"
+            tag_prefix_list = ""
+            count_number = 90
         }
       ]
     })
 }
+
+resource "aws_ecr_cluster" "ecs_cluster" {
+  name = "${var.repository_name}-cluster"
+
+  settings {
+    name  = "containerInsights"
+    value = "enabled"
+  }
+}
+
