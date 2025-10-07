@@ -1,11 +1,11 @@
 resource "aws_ecs_task_definition" "service" {
-  family = "service"
+  family = "${var.service_name}"
   container_definitions = jsonencode([
     {
-      name      = "first"
-      image     = "service-first"
-      cpu       = 10
-      memory    = 512
+      name      = "${var.service_name}-http"
+      image     = "${var.ecr_repository_url}:${var.image_tag}"
+      cpu       = var.cpu_usage
+      memory    = var.memory_usage
       essential = true
       portMappings = [
         {
@@ -15,10 +15,10 @@ resource "aws_ecs_task_definition" "service" {
       ]
     },
     {
-      name      = "second"
-      image     = "service-second"
-      cpu       = 10
-      memory    = 256
+      name      = "${var.service_name}-https"
+      image     = "${var.ecr_repository_url}:${var.image_tag}"
+      cpu       = var.cpu_usage
+      memory    = var.memory_usage
       essential = true
       portMappings = [
         {
