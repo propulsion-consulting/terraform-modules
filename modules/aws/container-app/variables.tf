@@ -26,3 +26,9 @@ variable "memory_usage" {
   default     = 512
 }
 
+variable "environment_variables" {
+  description = "Environment variables for the container"
+  type        = list(string)
+  default     = []
+}
+

@@ -7,6 +7,7 @@ resource "aws_ecs_task_definition" "service" {
       cpu       = var.cpu_usage
       memory    = var.memory_usage
       essential = true
+      environment_variables = var.environment_variables
       portMappings = [
         {
           containerPort = 80
@@ -20,6 +21,7 @@ resource "aws_ecs_task_definition" "service" {
       cpu       = var.cpu_usage
       memory    = var.memory_usage
       essential = true
+      environment_variables = var.environment_variables
       portMappings = [
         {
           containerPort = 443
