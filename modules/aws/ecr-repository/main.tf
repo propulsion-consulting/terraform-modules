@@ -25,16 +25,7 @@ resource "aws_ecr_repository" "container_app_registry" {
 }
 
 resource "aws_ecr_lifecycle_policy" "example" {
-  repository = aws_ecr_repository.container_app_registry.name
-  policy = var.lifecycle_policy
+    repository = aws_ecr_repository.container_app_registry.name
+    policy = var.lifecycle_policy
+    depends_on = [aws_ecr_repository.container_app_registry]
 }
-
-resource "aws_ecr_cluster" "ecs_cluster" {
-  name = "${var.repository_name}-cluster"
-
-  settings {
-    name  = "containerInsights"
-    value = "enabled"
-  }
-}
-
