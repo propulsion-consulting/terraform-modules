@@ -50,6 +50,7 @@ resource "aws_cloudwatch_log_group" "ecs_logs" {
   tags = {
     Name        = "${var.service_name}-logs"
     Environment = "${var.environment}"
+    Terraform   = "true"
   }
 }
 
@@ -69,5 +70,6 @@ resource "aws_ecs_service" "app" {
   tags = {
     Name        = "${var.service_name}-ecs-service"
     Environment = "${var.environment}"
+    Terraform   = "true"
   }
 }
