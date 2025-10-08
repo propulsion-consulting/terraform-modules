@@ -34,9 +34,10 @@ resource "aws_ecs_task_definition" "service" {
     }
   ])
 
-  volume {
-    name      = "service-storage"
-    host_path = "/ecs/service-storage"
+  tags = {
+    Terraform = "true"
+    Name      = "${var.service_name}-task-definition"
+    Environment = "${var.environment}"
   }
 
   placement_constraints {

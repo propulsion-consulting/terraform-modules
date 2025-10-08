@@ -1,10 +1,16 @@
-# Application Service Module
-
 * General module for deploying infrastructure for new "full stack" applications. 
 * Deployment for infrastructure is separated between home development server and AWS cloud infrastructure. Github actions will deploy to both environments. 
-* Includes data storage, API integrations and a client side module for hosting front end applications. 
+* Base infrastructure requires a postgres deployment, a public registry to push docker containers to, and network setup on the AWS side.
 
-# On Premises Application Service
+# On Premises
+
+| Component                     | Description                                                                                                                                                                                              |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Docker Registry**           | Local docker registry hosted on server, all application docker images are pushed to this registry and pulled down during app deployment                                                                  |
+| **Postgres Deployment**       | A postgres database cluster needs to exist in order for applications to create databases on it. Deployment is mimimal with no networking setup and regular username and password authentication for now. |
+| **API Source Code Container** | All application source code is docker containerized and depends on the local registry existing so that the application source code can be pushed to it.                                                  |
+
+## Application Service Architecture
 
 ![application-service-on-prem](../assets/application-service-on-prem.jpg)
 
