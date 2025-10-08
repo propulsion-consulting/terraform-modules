@@ -40,10 +40,6 @@ resource "aws_ecs_task_definition" "service" {
     Environment = "${var.environment}"
   }
 
-  placement_constraints {
-    type       = "memberOf"
-    expression = "attribute:ecs.availability-zone in [us-east-2a, us-east-2b]"
-  }
 }
 
 # CloudWatch Log Group
