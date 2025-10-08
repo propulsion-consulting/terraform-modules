@@ -1,3 +1,8 @@
+variable "task_execution_role_arn" {
+  description = "ARN of the ECS task execution role"
+  type        = string
+}
+
 variable "service_name" {
   description = "Name of the ECS service"
   type        = string
@@ -24,6 +29,28 @@ variable "memory_usage" {
   description = "Memory in MiB for the container"
   type        = number
   default     = 512
+}
+
+variable "environment" {
+  description = "Deployment environment (e.g., dev, staging, prod)"
+  type        = string
+}
+
+variable "ecs_cluster_id" {
+  description = "ID of the ECS cluster"
+  type        = string
+}
+
+variable "security_groups" {
+  description = "List of security group IDs"
+  type        = list(string)
+  default     = []
+}
+
+variable "public_subnets" {
+  description = "List of public subnet IDs"
+  type        = list(string)
+  default     = []
 }
 
 variable "environment_variables" {
