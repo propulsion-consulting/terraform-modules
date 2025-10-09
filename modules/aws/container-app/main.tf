@@ -19,6 +19,14 @@ resource "aws_ecs_task_definition" "service" {
           hostPort      = 80
         }
       ]
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          "awslogs-group"         = "/ecs/${var.service_name}"
+          "awslogs-region"        = "us-east-2"
+          "awslogs-stream-prefix" = "ecs"
+        }
+      }
     },
     {
       name      = "${var.service_name}-https"
