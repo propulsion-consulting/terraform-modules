@@ -19,7 +19,7 @@ module "vpc" {
 
 # Internet Gateway
 resource "aws_internet_gateway" "main" {
-  vpc_id = module.vpc.main.id
+  vpc_id = module.vpc.vpc_id
 
   tags = {
     Name        = "${var.vpc_name}-igw"
