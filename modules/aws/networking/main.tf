@@ -17,6 +17,16 @@ module "vpc" {
   }
 }
 
+# Internet Gateway
+resource "aws_internet_gateway" "main" {
+  vpc_id = module.vpc.main.id
+
+  tags = {
+    Name        = "${var.vpc_name}-igw"
+    Environment = var.environment
+  }
+}
+
 # Public Subnets
 resource "aws_subnet" "public" {
   count                   = 2
@@ -30,6 +40,22 @@ resource "aws_subnet" "public" {
     Environment = "${var.environment}"
   }
 }
+
+# Route Table for Public Subnets
+resource "aws_route_table" "public" {
+  vpc_id = module.vpc.vpc_id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.main.id
+  }
+
+  tags = {
+    Name        = "${var.vpc_name}-public-rt"
+    Environment = var.environment
+  }
+}
+
 
 # Create a DB subnet group for RDS
 resource "aws_db_subnet_group" "propulsion" {
