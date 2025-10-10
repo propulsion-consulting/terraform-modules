@@ -17,6 +17,10 @@ resource "aws_ecs_task_definition" "service" {
         {
           containerPort = 80
           hostPort      = 80
+        },
+        {
+          containerPort = 443
+          hostPort      = 443
         }
       ]
       logConfiguration = {
@@ -27,18 +31,6 @@ resource "aws_ecs_task_definition" "service" {
           "awslogs-stream-prefix" = "ecs"
         }
       }
-    },
-    {
-      name      = "${var.service_name}-https"
-      image     = "${var.ecr_repository_url}:${var.image_tag}"
-      essential = true
-      environment_variables = var.environment_variables
-      portMappings = [
-        {
-          containerPort = 443
-          hostPort      = 443
-        }
-      ]
     }
   ])
 
