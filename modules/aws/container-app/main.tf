@@ -12,7 +12,7 @@ resource "aws_ecs_task_definition" "service" {
       name      = "${var.service_name}-http"
       image     = "${var.ecr_repository_url}:${var.image_tag}"
       essential = true
-      environment_variables = var.environment_variables
+      environment = var.environment_variables
       portMappings = [
         {
           containerPort = 80

@@ -55,7 +55,10 @@ variable "public_subnets" {
 
 variable "environment_variables" {
   description = "Environment variables for the container"
-  type        = list(string)
+  type        = list(object({
+    name  = string
+    value = string
+  }))
   default     = []
 }
 
