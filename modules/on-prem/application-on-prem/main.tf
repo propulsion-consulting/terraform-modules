@@ -11,7 +11,6 @@ terraform {
   }
 }
 
-
 provider "postgresql" {
   host            = "localhost"
   port            = 5432
