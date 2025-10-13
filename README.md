@@ -1,6 +1,3 @@
-# terraform-modules
-Terraform modules to manage AWS and local home server infrastructure
-
 # ☁️ Terraform Infrastructure Modules
 
 This repository contains Terraform modules, documentation, and visual architecture assets for deploying a **hybrid infrastructure platform** supporting both **cloud (AWS)** and **on-premise** environments.  
@@ -57,3 +54,14 @@ pip install -r requirements.txt
 | `container-registry-on-prem` | Local container registry configuration |
 | `postgres-appdb-on-prem` | Application PostgreSQL database for on-prem environments |
 | `postgres-deployment-on-prem` | Core PostgreSQL infrastructure deployment for on-prem setups |
+
+# 🧰 Build and Serve Documentation
+Generate and preview the documentation site using MkDocs:
+
+```bash
+make docs       # or mkdocs serve
+```
+Then open your browser at:
+```bash
+http://127.0.0.1:8000
+```
