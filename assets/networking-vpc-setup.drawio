@@ -1,0 +1,46 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
+  <diagram name="Page-1" id="poeLqoRC7olKtQSm_eBS">
+    <mxGraphModel dx="1223" dy="875" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="M6jTmLETXqvDHsrYBA7V-2" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.virtual_private_cloud;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="373" y="110" width="105" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="M6jTmLETXqvDHsrYBA7V-3" value="" style="rounded=1;arcSize=10;dashed=1;strokeColor=#ff0000;fillColor=none;gradientColor=none;dashPattern=8 4;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="186" y="320" width="179.5" height="189.5" as="geometry" />
+        </mxCell>
+        <mxCell id="M6jTmLETXqvDHsrYBA7V-4" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#C925D1;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.rds_instance;" vertex="1" parent="1">
+          <mxGeometry x="237" y="400" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="M6jTmLETXqvDHsrYBA7V-5" value="" style="rounded=1;arcSize=10;dashed=1;strokeColor=#ff0000;fillColor=none;gradientColor=none;dashPattern=8 4;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="484" y="320" width="179.5" height="189.5" as="geometry" />
+        </mxCell>
+        <mxCell id="M6jTmLETXqvDHsrYBA7V-6" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ecs;" vertex="1" parent="1">
+          <mxGeometry x="535" y="400" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="M6jTmLETXqvDHsrYBA7V-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="M6jTmLETXqvDHsrYBA7V-7" target="M6jTmLETXqvDHsrYBA7V-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="M6jTmLETXqvDHsrYBA7V-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="M6jTmLETXqvDHsrYBA7V-7" target="M6jTmLETXqvDHsrYBA7V-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="M6jTmLETXqvDHsrYBA7V-7" value="" style="rounded=1;arcSize=10;dashed=0;fillColor=none;gradientColor=none;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="329" y="60" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="M6jTmLETXqvDHsrYBA7V-8" value="" style="dashed=0;html=1;shape=mxgraph.aws3.permissions;fillColor=#D9A741;gradientColor=none;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="329" y="40" width="30" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="M6jTmLETXqvDHsrYBA7V-11" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Postgres Security Group&lt;/b&gt;&lt;/font&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="223.75" y="340" width="104" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="M6jTmLETXqvDHsrYBA7V-12" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;ECS Tasks Security Group&lt;/b&gt;&lt;/font&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="521.75" y="340" width="104" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="M6jTmLETXqvDHsrYBA7V-13" value="" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.nat_gateway;" vertex="1" parent="1">
+          <mxGeometry x="393.52" y="230" width="63.97" height="51.7" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
