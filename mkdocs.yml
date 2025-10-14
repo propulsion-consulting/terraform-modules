@@ -1,8 +1,5 @@
 site_name: Terraform Modules 
 
-# theme:
-#   name: material
-
 theme:
   name: material
   palette:

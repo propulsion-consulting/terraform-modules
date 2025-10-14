@@ -10,6 +10,13 @@
 | **Postgres Deployment**       | A postgres database cluster needs to exist in order for applications to create databases on it. Deployment is mimimal with no networking setup and regular username and password authentication for now. |
 | **API Source Code Container** | All application source code is docker containerized and depends on the local registry existing so that the application source code can be pushed to it.                                                  |
 
+## Container Service Orchestration
+
+![application-service-on-prem](../assets/container-app-orchestration.jpg)
+
+* **ECS Cluster**: ECS cluster hosts all container app services, ECS task execution role is attached to cluster to allow tasks to be executed for each container
+* **App Service**: App service is deployed within the ECS cluster, pulls container from ECR, then creates a ECS service with a task definition, task definition hosts on port 80/443 for web traffic. Logging is enabled which will log to a corresponding cloudwatch group for monitoring.
+
 ## Application Service Architecture
 
 ![application-service-on-prem](../assets/application-service-on-prem.jpg)

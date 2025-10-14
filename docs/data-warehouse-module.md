@@ -9,6 +9,13 @@
 
 ![dwh-design-on-prem](../assets/dwh-design-on-prem.jpg)
 
+## Components
+| Feature Alias              | Description                                                                                                                                                                                                    |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Version Controlled IAC** | Changes to infrastructure are managed in CI/CD, for the on premises version,  a github actions runner it setup on the home server to deploy remotely.                                                          |
+| **Containerization**       | Making use of the provided clickhouse container for deploying instances on local home server. Clickhouse clusters are allocated based on what resources we provide to the container memory and cpu usage wise. |
+| **Database Management**    | A separate repository is used to manage all the clickhouse database administration, and individual database management using flyway (redgate)                                                                  |
+
 # Cloud Data Warehouse Deployment
 
 ![cloud-dwh-design](../assets/cloud-dwh-design.jpg)
