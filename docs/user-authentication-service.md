@@ -30,6 +30,7 @@
 | **Update User**      | `/users/:id`      | Update a specific user and modify the existing fields, changing E-mail or Phone number will prompt for a one time pass code. |
 | **Bulk Update User** | `/users/bulk`     | Update an array of users, pass user ids of each object                                                                       |
 
+
 ## Two Factor Authentication 
 
 * User will register on the site with their information, provide the fields required for the user model entry, store the entry in the database.
