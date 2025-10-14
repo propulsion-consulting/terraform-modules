@@ -1,3 +1,5 @@
+# Networking Setup
+
 * For deploying on AWS, a VPC (virtual private cloud) configuration is required for us to host networked services that will be accessed over the internet publicly. 
 * For our modules, specifically we need networking access for postgres (RDS) and for web traffic to ECS containers hosting web applications or API's
 * Down below is the current architecture for what the networking module does within these terraform modules. This is part of the base configuration that needs to be deployed before creating any apps or services.

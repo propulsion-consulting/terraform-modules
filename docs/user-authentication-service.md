@@ -29,6 +29,7 @@
 | **Bulk Delete**      | `/users/bulk`     | Bulk delete users with id's provided                                                                                         |
 | **Update User**      | `/users/:id`      | Update a specific user and modify the existing fields, changing E-mail or Phone number will prompt for a one time pass code. |
 | **Bulk Update User** | `/users/bulk`     | Update an array of users, pass user ids of each object                                                                       |
+
 ## Two Factor Authentication 
 
 * User will register on the site with their information, provide the fields required for the user model entry, store the entry in the database.
@@ -49,6 +50,7 @@
 | `ACTIVE`     | `BOOLEAN` | Boolean to indicate if one time pass code entry is still valid for authentication. |
 | `CREATED_AT` | `DATE`    | Date the 2 factor auth entry was created/registered                                |
 | `UPDATED_AT` | `DATE`    | Date the 2 factor auth entry was updated                                           |
+
 ##  Registration Key Management
 
 * For applications with authentication but not available for full public use, a registration key system will be used to issue unique invites. 
